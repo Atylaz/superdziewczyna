@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walentynkowy klimat</title>
+    <style>
+        /* Styl CSS dla walentynkowego klimatu */
+        body {
+            background-color: #f7e9f9; /* Delikatny róż */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Ustawienie wysokości na pełną wysokość widoku */
+            margin: 0; /* Usunięcie marginesów */
+        }
+
+        h1 {
+            color: #d81b60; /* Intensywny róż */
+            margin-bottom: 20px; /* Dodatkowy margines na dole */
+        }
+
+        .button {
+            background-color: #ff4081; /* Różowy */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #e91e63; /* Ciemniejszy róż */
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Wyśrodkowanie tekstu w sekcji */
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* Dodatkowy margines na dole */
+        }
+
+        .card {
+            background-color: #ffffff; /* Białe tło */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #f8bbd0; /* Jasny róż */
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+	
+    <h1>Dzień dobry</h1>
+	
+    <div class="section">
+        <div class="card-container" id="image-container">
+            <!-- Tutaj będzie wyświetlane losowe zdjęcie -->
+        </div>
+        <button class="button" onclick="loadImage()">Losuj Zdjęcie</button>
+    </div>
+
+    <div class="footer">
+        <p>kocham cię pusia</p>
+    </div>
+
+    <script>
+        var imageContainer = document.getElementById("image-container");
+        var imageSources = [
+           "https://i.ibb.co/DLTbYR0/339872957-1028534904775796-35939215721878405-n.jpg"
+            // Dodaj więcej linków do obrazków z hostingu
+        ];
+
+        var textArray = [
+		    "twoja dupa jest taka super że ja nw co innym dupom powiesz",
+	"jakbym miał pracować w stoczni to tylko w MR stoczniowiec",
+	"Jeżeli 80085 to boobs to ty masz super boobies",
+	"Jak śpie i coś mi się śni to lubie jak mi się śni że się ruchamy",
+	"Masz super proporcje stup do nug",
+	"Gdy bóg nas zesłał z nieba to ja się wyjebałem na chodnik a ty na próg zwalniający",
+	"Cyce klaszczą, dupa wiruje, martyna super chłopak",
+	"Pasujemy do siebie jak dwie krople wody, tylko ze ja mam chuja a ty cipe",
+	"Dupa klaszcze, chuje stoją, po wixapolu czeka nas oiom",
+	"Gdybyś była kotem to takim fajnym",
+	"Golden retriver, cat ragdoll, marcin autist",
+	"Czy twój tata jest saperem? odpowiedz nie ma znaczenia time to smash",
+	"Masz super dupe",
+	"Masz giga op diagnostykę molekularną na ćwiczeniach",
+	"Gdyby rośliny były typem miłości to patrzałbym na ciebie jak rafał na mnie przy wejściówce",
+	"Bez chuja w dupie ani rusz, a bez chuja to tez rusz nie dostaniesz",
+	"Masz super rozstaw oczu",
+	"Jakbyś byłą pączkiem to takim słodkim",
+        ];
+
+        function getRandomItemFromArray(array) {
+            var randomIndex = Math.floor(Math.random() * array.length);
+            return array[randomIndex];
+        }
+
+        function loadImage() {
+            // Sprawdź, czy dzisiaj już losowano
+            var lastTime = localStorage.getItem("lastTime");
+            var today = new Date().toLocaleDateString();
+            if (lastTime === today) {
+                alert("Dziś już losowano!");
+                return; // Zakończ funkcję, jeśli już losowano
+            }
+
+            var randomImageSrc = getRandomItemFromArray(imageSources);
+            var randomText = getRandomItemFromArray(textArray);
+            imageContainer.innerHTML = ""; // Wyczyść kontener przed dodaniem nowego obrazka
+            var card = document.createElement("div");
+            card.classList.add("card");
+
+            var image = document.createElement("img");
+            image.src = randomImageSrc;
+            image.style.maxWidth = "300px"; // Ustaw maksymalną szerokość obrazka na 300 pikseli
+            image.style.maxHeight = "300px"; // Ustaw maksymalną wysokość obrazka na 300 pikseli
+
+            var text = document.createElement("p");
+            text.textContent = randomText;
+
+            card.appendChild(image);
+            card.appendChild(text);
+            imageContainer.appendChild(card);
+
+            // Zapisz dzisiejszą datę jako ostatnią datę losowania
+            localStorage.setItem("lastTime", today);
+        }
+    </script>
+</body>
+</html>
