@@ -192,13 +192,14 @@
                 displayImage(lastImageSrc, lastText);
 
                 // Pokaż komunikat
-                alert("Dziś już losowałaś paruwo. Tutaj masz ostatnie zdjęcie! <3");
+                
             } else {
                 var randomImageSrc = getRandomItemFromArray(imageSources);
                 var randomText = getRandomItemFromArray(textArray);
 
                 // Wyświetl losowe zdjęcie
                 displayImage(randomImageSrc, randomText);
+		    alert("Dziś już losowałaś paruwo. Tutaj masz ostatnie zdjęcie! <3");
 
                 // Zapisz dzisiejszą datę i losowane dane
                 localStorage.setItem("lastTime", today);
