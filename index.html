@@ -100,7 +100,7 @@
         ];
 
         var textArray = [
-		    "twoja dupa jest taka super że ja nw co innym dupom powiesz",
+	"twoja dupa jest taka super że ja nw co innym dupom powiesz",
 	"jakbym miał pracować w stoczni to tylko w MR stoczniowiec",
 	"Jeżeli 80085 to boobs to ty masz super boobies",
 	"Jak śpie i coś mi się śni to lubie jak mi się śni że się ruchamy",
@@ -130,30 +130,42 @@
             var lastTime = localStorage.getItem("lastTime");
             var today = new Date().toLocaleDateString();
             if (lastTime === today) {
-                alert("Dziś już losowano!");
-                return; // Zakończ funkcję, jeśli już losowano
-            }
+                var lastImageSrc = localStorage.getItem("lastImage");
+                var lastText = localStorage.getItem("lastText");
 
-            var randomImageSrc = getRandomItemFromArray(imageSources);
-            var randomText = getRandomItemFromArray(textArray);
+                // Wyświetl ostatnie zdjęcie
+                displayImage(lastImageSrc, lastText);
+				alert("Dziś już losowałaś paruwo. Oto ostatnie zdjęcie.");
+            } else {
+                var randomImageSrc = getRandomItemFromArray(imageSources);
+                var randomText = getRandomItemFromArray(textArray);
+
+                // Wyświetl losowe zdjęcie
+                displayImage(randomImageSrc, randomText);
+
+                // Zapisz dzisiejszą datę i losowane dane
+                localStorage.setItem("lastTime", today);
+                localStorage.setItem("lastImage", randomImageSrc);
+                localStorage.setItem("lastText", randomText);
+            }
+        }
+
+        function displayImage(imageSrc, text) {
             imageContainer.innerHTML = ""; // Wyczyść kontener przed dodaniem nowego obrazka
             var card = document.createElement("div");
             card.classList.add("card");
 
             var image = document.createElement("img");
-            image.src = randomImageSrc;
+            image.src = imageSrc;
             image.style.maxWidth = "300px"; // Ustaw maksymalną szerokość obrazka na 300 pikseli
             image.style.maxHeight = "300px"; // Ustaw maksymalną wysokość obrazka na 300 pikseli
 
-            var text = document.createElement("p");
-            text.textContent = randomText;
+            var textElement = document.createElement("p");
+            textElement.textContent = text;
 
             card.appendChild(image);
-            card.appendChild(text);
+            card.appendChild(textElement);
             imageContainer.appendChild(card);
-
-            // Zapisz dzisiejszą datę jako ostatnią datę losowania
-            localStorage.setItem("lastTime", today);
         }
     </script>
 </body>
