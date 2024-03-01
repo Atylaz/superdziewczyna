@@ -180,31 +180,30 @@
             return array[randomIndex];
         }
 
-        function loadImage() {
-            // Sprawdź, czy dzisiaj już losowano
-            var lastTime = localStorage.getItem("lastTime");
-            var today = new Date().toLocaleDateString();
-            if (lastTime === today) {
-                var lastImageSrc = localStorage.getItem("lastImage");
-                var lastText = localStorage.getItem("lastText");
+ function loadImage() {
+    // Sprawdź, czy dzisiaj już losowano
+    var lastTime = localStorage.getItem("lastTime");
+    var today = new Date().toLocaleDateString();
+    if (lastTime === today) {
+        var lastImageSrc = localStorage.getItem("lastImage");
+        var lastText = localStorage.getItem("lastText");
 
-                // Wyświetl ostatnie zdjęcie
-                displayImage(lastImageSrc, lastText);
+        // Wyświetl ostatnie zdjęcie
+        displayImage(lastImageSrc, lastText);
+    } else {
+        var randomImageSrc = getRandomItemFromArray(imageSources);
+        var randomText = getRandomItemFromArray(textArray);
 
-                // Pokaż komunikat
-                
-            } else {
-                var randomImageSrc = getRandomItemFromArray(imageSources);
-                var randomText = getRandomItemFromArray(textArray);
+        // Wyświetl losowe zdjęcie
+        displayImage(randomImageSrc, randomText);
 
-                // Wyświetl losowe zdjęcie
-                displayImage(randomImageSrc, randomText);
-		    alert("Dziś już losowałaś paruwo. Tutaj masz ostatnie zdjęcie! <3");
+        // Zapisz dzisiejszą datę i losowane dane
+        localStorage.setItem("lastTime", today);
+        localStorage.setItem("lastImage", randomImageSrc);
+        localStorage.setItem("lastText", randomText);
 
-                // Zapisz dzisiejszą datę i losowane dane
-                localStorage.setItem("lastTime", today);
-                localStorage.setItem("lastImage", randomImageSrc);
-                localStorage.setItem("lastText", randomText)   
+        // Wyświetl komunikat tylko gdy już dzisiaj było losowanie
+        alert("Dziś już losowałaś paruwo. Tutaj masz ostatnie zdjęcie! <3");
             }
         }
 
