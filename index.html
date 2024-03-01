@@ -75,12 +75,18 @@
             margin-top: 50px;
             border-radius: 5px;
         }
+
+        .walentynkowy-text {
+            color: #d81b60; /* Intensywny róż */
+            font-style: italic; /* Kursywa */
+            margin-bottom: 10px; /* Dodatkowy margines na dole */
+        }
     </style>
 </head>
 <body>
-	
+    
     <h1>Dzień dobry</h1>
-	
+    
     <div class="section">
         <div class="card-container" id="image-container">
             <!-- Tutaj będzie wyświetlane losowe zdjęcie -->
@@ -89,7 +95,7 @@
     </div>
 
     <div class="footer">
-        <p>kocham cię pusia</p>
+        <p id="footerText">kocham cię pusia</p>
     </div>
 
     <script>
@@ -100,7 +106,7 @@
         ];
 
         var textArray = [
-	    "twoja dupa jest taka super że ja nw co innym dupom powiesz",
+   "twoja dupa jest taka super że ja nw co innym dupom powiesz",
 	"jakbym miał pracować w stoczni to tylko w MR stoczniowiec",
 	"Jeżeli 80085 to boobs to ty masz super boobies",
 	"Jak śpie i coś mi się śni to lubie jak mi się śni że się ruchamy",
@@ -180,7 +186,9 @@
 
                 // Wyświetl ostatnie zdjęcie
                 displayImage(lastImageSrc, lastText);
-				alert("Dziś już losowałaś paruwo. Oto ostatnie zdjęcie.");
+
+                // Pokaż komunikat
+                alert("Dziś już losowano! Oto ostatnie zdjęcie.");
             } else {
                 var randomImageSrc = getRandomItemFromArray(imageSources);
                 var randomText = getRandomItemFromArray(textArray);
@@ -192,6 +200,9 @@
                 localStorage.setItem("lastTime", today);
                 localStorage.setItem("lastImage", randomImageSrc);
                 localStorage.setItem("lastText", randomText);
+
+                // Pokaż komunikat
+                alert("Losowanie zakończone! Oto nowe zdjęcie.");
             }
         }
 
@@ -207,6 +218,7 @@
 
             var textElement = document.createElement("p");
             textElement.textContent = text;
+            textElement.classList.add("walentynkowy-text");
 
             card.appendChild(image);
             card.appendChild(textElement);
