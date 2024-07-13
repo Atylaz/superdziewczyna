@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Walentynkowy klimat</title>
     <style>
-        /* Styl CSS dla walentynkowego klimatu */
         body {
             background-color: #f7e9f9; /* Delikatny róż */
             font-family: Arial, sans-serif;
@@ -13,13 +12,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh; /* Ustawienie wysokości na pełną wysokość widoku */
+            min-height: 100vh; /* Ustawienie minimalnej wysokości na pełną wysokość widoku */
             margin: 0; /* Usunięcie marginesów */
+            padding: 10px; /* Dodanie odstępu wokół zawartości */
         }
 
         h1 {
             color: #d81b60; /* Intensywny róż */
             margin-bottom: 20px; /* Dodatkowy margines na dole */
+            text-align: center;
         }
 
         .button {
@@ -47,6 +48,9 @@
             margin: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center; /* Wyśrodkowanie tekstu w sekcji */
+            width: 100%; /* Szerokość na pełną szerokość */
+            max-width: 600px; /* Maksymalna szerokość sekcji */
+            box-sizing: border-box; /* Uwzględnij padding wewnętrzny w szerokości */
         }
 
         .card-container {
@@ -60,6 +64,9 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Szerokość na pełną szerokość */
+            max-width: 300px; /* Maksymalna szerokość karty */
+            box-sizing: border-box; /* Uwzględnij padding wewnętrzny w szerokości */
         }
 
         .card img {
@@ -74,6 +81,8 @@
             padding: 20px;
             margin-top: 50px;
             border-radius: 5px;
+            width: 100%; /* Szerokość na pełną szerokość */
+            box-sizing: border-box; /* Uwzględnij padding wewnętrzny w szerokości */
         }
 
         .walentynkowy-text {
